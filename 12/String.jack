@@ -12,53 +12,129 @@
  */
 class String {
 
+	field Array chars;
+	field int length;
+	field int capacity;
+
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
     constructor String new(int maxLength) {
+		if (~(maxLength > 0)) {
+			let capacity = 1;
+		}
+		else {
+			let capacity = maxLength;
+		}
+		let chars = Array.new(capacity);
+		let length = 0;
+		return this;
     }
 
     /** Disposes this string. */
     method void dispose() {
+		do chars.dispose();
+		do Memory.deAlloc(this);
+		return;
     }
 
     /** Returns the current length of this string. */
     method int length() {
+		return length;
     }
 
     /** Returns the character at the j-th location of this string. */
     method char charAt(int j) {
+		return chars[j];
     }
 
     /** Sets the character at the j-th location of this string to c. */
     method void setCharAt(int j, char c) {
+		let chars[j] = c;
+		return;
     }
 
     /** Appends c to this string's end and returns this string. */
     method String appendChar(char c) {
+		if (length < capacity) {
+			let chars[length] = c;
+			let length = length + 1;
+		}
+		return this;
     }
 
     /** Erases the last character from this string. */
     method void eraseLastChar() {
+		if (length > 0) {
+			let length = length - 1;
+		}
+		return;
     }
 
     /** Returns the integer value of this string, 
      *  until a non-digit character is detected. */
     method int intValue() {
+		var int chr, i, t, result;
+		let i = length;
+		let t = 1;
+		let result = 0;
+		while (i > 0) {
+			let chr = chars[i - 1];
+			if ((47 < chr) & (chr < 58)) {
+				let result = result + ((chr - 48) * t);
+			}
+			let i = i - 1;
+			let t = t * 10;
+		}
+		if (chars[0] = 45) {
+			let result = -result;
+		}
+		return result;
     }
-
+	
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
+		let length = 0;
+		if (val < 0) {
+			let val = Math.abs(val);
+			do appendChar(45);
+		}
+		do doSetInt(val);
+		return;
     }
+	
+	method void doSetInt(int val) {
+		var int digit, chr;
+		let digit = String.mod(val, 10);
+		let chr = digit + 48;
+		if (val < 10) {
+			do appendChar(chr);
+		}
+		else {
+			do doSetInt(val / 10);
+			do appendChar(chr);
+		}
+		return;
+	}
 
     /** Returns the new line character. */
     function char newLine() {
+		return 128;
     }
 
     /** Returns the backspace character. */
     function char backSpace() {
+		return 129;
     }
 
     /** Returns the double quote (") character. */
     function char doubleQuote() {
+		return 34;
     }
+	
+	function int mod(int x, int d) {
+		while ((x > d) | (x = d)) {
+			let x = x - d;
+		}
+		return x;
+	}
 }
