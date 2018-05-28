@@ -1,0 +1,150 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/05/CPU.hdl
+
+/**
+ * The Hack CPU (Central Processing unit), consisting of an ALU,
+ * two registers named A and D, and a program counter named PC.
+ * The CPU is designed to fetch and execute instructions written in 
+ * the Hack machine language. In particular, functions as follows:
+ * Executes the inputted instruction according to the Hack machine 
+ * language specification. The D and A in the language specification
+ * refer to CPU-resident registers, while M refers to the external
+ * memory location addressed by A, i.e. to Memory[A]. The inM input 
+ * holds the value of this location. If the current instruction needs 
+ * to write a value to M, the value is placed in outM, the address 
+ * of the target location is placed in the addressM output, and the 
+ * writeM control bit is asserted. (When writeM==0, any value may 
+ * appear in outM). The outM and writeM outputs are combinational: 
+ * they are affected instantaneously by the execution of the current 
+ * instruction. The addressM and pc outputs are clocked: although they 
+ * are affected by the execution of the current instruction, they commit 
+ * to their new values only in the next time step. If reset==1 then the 
+ * CPU jumps to address 0 (i.e. pc is set to 0 in next time step) rather 
+ * than to the address resulting from executing the current instruction. 
+ */
+ 
+//	instruction[15] = 0 - A-instruction
+//	instruction[0..14] is address
+//
+//	instruction[15] = 1 - C-instruction
+//	destination = compute; jump
+//
+//	1	1	1	a	c1	c2	c3	c4	c5	c6	d1	d2	d3	j1	j2	j3
+//	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1	0
+//
+//	compute:
+//	a=0	a=1	c1	c2	c3	c4	c5	c6
+//	0		1	0	1	0	1	0	//	ALU(x=D, y=A/M, zx=1, nx=0, zy=1, ny=0, f=1, no=0) = 0		~	c1=1	c2=0	c3=1	c4=0	c5=1	c6=0	~	0000000000000000 + 0000000000000000 = 0
+//	1		1	1	1	1	1	1	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=1, ny=1, f=1, no=1) = 1		~	c1=1	c2=1	c3=1	c4=1	c5=1	c6=1	~	Not(Not(0000000000000000) + Not(0000000000000000)) = Not(1111111111111111 + 1111111111111111) = Not(1111111111111110) = 0000000000000001 = 1
+//	-1		1	1	1	0	1	0	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=1, ny=0, f=1, no=0) = -1		~	c1=1	c2=1	c3=1	c4=0	c5=1	c6=0	~	Not(0000000000000000) + 0000000000000000 = 1111111111111111 = -1
+//	D		0	0	1	1	0	0	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=1, ny=1, f=0, no=0) = D		~	c1=0	c2=0	c3=1	c4=1	c5=0	c6=0	~	D & Not(0000000000000000) = D & 1111111111111111 = D
+//	A	M	1	1	0	0	0	0	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=0, ny=0, f=0, no=0) = A/M	~	c1=1	c2=1	c3=0	c4=0	c5=0	c6=0
+//	!D		0	0	1	1	0	1	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=1, ny=1, f=0, no=1) = !D		~	c1=0	c2=0	c3=1	c4=1	c5=0	c6=1	~	Not(D & Not(0000000000000000)) = Not(D & 1111111111111111) = Not(D)
+//	!A	!M	1	1	0	0	0	1	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=0, ny=0, f=0, no=1) = !A/M	~	c1=1	c2=1	c3=0	c4=0	c5=0	c6=1
+//	-D		0	0	1	1	1	1	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=1, ny=1, f=1, no=1) = -D		~	c1=0	c2=0	c3=1	c4=1	c5=1	c6=1	~	Not(D + Not(0000000000000000)) = Not(D + 1111111111111111) = -D
+//	-A	-M	1	1	0	0	1	1	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=0, ny=0, f=1, no=1) = -A/-M	~	c1=1	c2=1	c3=0	c4=0	c5=1	c6=1
+//	D+1		0	1	1	1	1	1	//	ALU(x=D, y=A/M, zx=0, nx=1, zy=1, ny=1, f=1, no=1) = D+1	~	c1=0	c2=1	c3=1	c4=1	c5=1	c6=1	~	Not(Not(D) + Not(0000000000000000)) = Not(Not(D) + 1111111111111111) = D+1 
+//	A+1	M+1	1	1	0	1	1	1	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=0, ny=1, f=1, no=1) = A/M+1	~	c1=1	c2=1	c3=0	c4=1	c5=1	c6=1
+//	D-1		0	0	1	1	1	0	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=1, ny=1, f=1, no=0) = D-1	~	c1=0	c2=0	c3=1	c4=1	c5=1	c6=0	~	D + Not(0000000000000000) = D + 1111111111111111 = D-1
+//	A-1	M-1	1	1	0	0	1	0	//	ALU(x=D, y=A/M, zx=1, nx=1, zy=0, ny=0, f=1, no=0) = A/M-1	~	c1=0	c2=0	c3=1	c4=1	c5=1	c6=0
+//	D+A	D+M	0	0	0	0	1	0	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=0, ny=0, f=1, no=0) = D+A	~	c1=0	c2=0	c3=0	c4=0	c5=1	c6=0
+//	D-A	D-M	0	1	0	0	1	1	//	ALU(x=D, y=A/M, zx=0, nx=1, zy=0, ny=0, f=1, no=1) = D-A/M	~	c1=0	c2=1	c3=0	c4=0	c5=1	c6=1	~	Not(Not(D) + A/M) = D-A/M
+//	A-D	M-D	0	0	0	1	1	1	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=0, ny=1, f=1, no=1) = A/M-D	~	c1=0	c2=0	c3=0	c4=1	c5=1	c6=1	~	Not(D + Not(A/M)) = A/M-D
+//	D&A	D&M	0	0	0	0	0	0	//	ALU(x=D, y=A/M, zx=0, nx=0, zy=0, ny=0, f=0, no=0) = D&A	~	c1=0	c2=0	c3=0	c4=0	c5=0	c6=0
+//	D|A	D|M	0	1	0	1	0	1	//	ALU(x=D, y=A/M, zx=0, nx=1, zy=0, ny=1, f=0, no=1) = D|A/M	~	c1=0	c2=1	c3=0	c4=1	c5=0	c6=1	~	Not(Not(D) & Not(A/M)) = D|A/M
+
+// ALU manipulates the x and y inputs and then operates on the resulting values, as follows:
+// if (zx  == 1) sets x = 0        // 16-bit constant
+// if (nx  == 1) sets x = ~x       // bitwise "not"
+// if (zy  == 1) sets y = 0        // 16-bit constant
+// if (ny  == 1) sets y = ~y       // bitwise "not"
+// if (f   == 1) sets out = x + y  // integer 2's-complement addition
+// if (f   == 0) sets out = x & y  // bitwise And
+// if (no  == 1) sets out = ~out   // bitwise Not
+// if (out == 0) sets zr = 1
+// if (out < 0)  sets ng = 1
+
+//	dest	d1	d2	d3
+//	null	0	0	0	value not stored
+//	M		0	0	1	value stored in RAM[A]
+//	D		0	1	0	value stored in D register
+//	MD		0	1	1
+//	A		1	0	0	value stored in A register
+//	AM		1	0	1
+//	AD		1	1	0
+//	AMD		1	1	1
+//
+//	jump	j1	j2	j3
+//	null	0	0	0	never jump
+//	JGT		0	0	1	if out > 0 jump
+//	JEQ		0	1	0	if out = 0 jump
+//	JGE		0	1	1	if out >= 0 jump
+//	JLT		1	0	0	if out < 0 jump
+//	JNE		1	0	1	if out <> 0 jump
+//	JLE		1	1	0	if out <= 0 jump
+//	JMP		1	1	1	always jump
+
+CHIP CPU {
+
+	IN  inM[16],         // M value input  (M = contents of RAM[A])
+		instruction[16], // Instruction for execution
+		reset;           // Signals whether to re-start the current
+					 // program (reset==1) or continue executing
+					 // the current program (reset==0).
+
+	OUT outM[16],        // M value output
+		writeM,          // Write to M? 
+		addressM[15],    // Address in data memory (of M)
+		pc[15];          // address of next instruction
+
+    PARTS:
+    
+	Not(in=instruction[15], out=isinstra);
+	And(a=instruction[15], b=true, out=isinstrc);
+
+	// A Register
+	// if instruction[15] = 0 - A-instruction, value from instruction must be loaded into A
+	// if instruction[15] = 1 - C-instruction, value from ALU may be loaded into A, depending on C-instruction's destination (if instruction[5] = 1)
+	
+	And(a=isinstrc, b=instruction[5], out=loada1);
+	Or(a=loada1, b=isinstra, out=loada);
+	Mux16(a=instruction, b=outalu, sel=isinstrc, out=ina);
+	ARegister(in=ina, load=loada, out=outa);
+
+	// D Register
+	// load if C-instruction and instruction[4] = 1
+	And(a=isinstrc, b=instruction[4], out=loadd);
+	DRegister(in=outalu, load=loadd, out=outd);
+	
+	// ALU, logic explained above
+	Mux16(a=outa, b=inM, sel=instruction[12], out=outam);
+	ALU(x=outd, y=outam, zx=instruction[11], nx=instruction[10], zy=instruction[9], ny=instruction[8], f=instruction[7], no=instruction[6], out=outalu, zr=outzr, ng=outng);
+	
+	// outM
+	And16(a=outalu, b=true, out=outM);
+	
+	// writeM
+	And(a=isinstrc, b=instruction[3], out=writeM);
+	
+	// addressM[15]
+	And16(a=outa, b=true, out[0..14]=addressM);
+	
+	// Jumping
+	Not(in=outng, out=notng);
+	Not(in=outzr, out=notzr);
+	And(a=notng, b=notzr, out=pos);
+	
+	And(a=instruction[2], b=outng, out=ngjump);
+	And(a=instruction[1], b=outzr, out=zrjump);
+	And(a=instruction[0], b=pos, out=posjump);
+	
+	Or(a=ngjump, b=zrjump, out=jump1);
+	Or(a=jump1, b=posjump, out=jump);
+	
+	And(a=isinstrc, b=jump, out=jumptoa);
+	
+	// PC
+	PC(in=outa, load=jumptoa, inc=true, reset=reset, out[0..14]=pc);
+}
