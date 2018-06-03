@@ -1,0 +1,9 @@
+VM/build
+VM/dist
+VM/nbproject
+VM/src/*.class
+VM/src/*.txt
+VM/src/*.bat
+VM/test
+VM/build.xml
+VM/manifest.mf
