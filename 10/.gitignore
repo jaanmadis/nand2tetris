@@ -1,0 +1,8 @@
+Compiler/build
+Compiler/nbproject
+Compiler/src/*.class
+Compiler/src/*.txt
+Compiler/src/*.bat
+Compiler/test
+Compiler/build.xml
+Compiler/manifest.mf
