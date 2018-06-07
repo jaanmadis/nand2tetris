@@ -1,0 +1,1859 @@
+<class>
+  <keyword> class </keyword>
+  <identifier category="ClassName"> Ball </identifier>
+  <symbol> { </symbol>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier kind="1" type="int" index="0" defined="True"> x </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="1" defined="True"> y </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier kind="1" type="int" index="2" defined="True"> lengthx </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="3" defined="True"> lengthy </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier kind="1" type="int" index="4" defined="True"> d </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="5" defined="True"> straightD </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="6" defined="True"> diagonalD </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> boolean </keyword>
+    <identifier kind="1" type="boolean" index="7" defined="True"> invert </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="boolean" index="8" defined="True"> positivex </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="boolean" index="9" defined="True"> positivey </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier kind="1" type="int" index="10" defined="True"> leftWall </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="11" defined="True"> rightWall </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="12" defined="True"> topWall </identifier>
+    <symbol> , </symbol>
+    <identifier kind="1" type="int" index="13" defined="True"> bottomWall </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <classVarDec>
+    <keyword> field </keyword>
+    <keyword> int </keyword>
+    <identifier kind="1" type="int" index="14" defined="True"> wall </identifier>
+    <symbol> ; </symbol>
+  </classVarDec>
+  <subroutineDec>
+    <keyword> constructor </keyword>
+    <identifier category="ClassName"> Ball </identifier>
+    <identifier category="SubName"> new </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="0" defined="True"> Ax </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="1" defined="True"> Ay </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="2" defined="True"> AleftWall </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="3" defined="True"> ArightWall </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="4" defined="True"> AtopWall </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="5" defined="True"> AbottomWall </identifier>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="0" used="True"> Ax </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="1" used="True"> Ay </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="10" used="True"> leftWall </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="2" used="True"> AleftWall </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="11" used="True"> rightWall </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="3" used="True"> ArightWall </identifier>
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <integerConstant> 6 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="12" used="True"> topWall </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="4" used="True"> AtopWall </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="13" used="True"> bottomWall </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="5" used="True"> AbottomWall </identifier>
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <integerConstant> 6 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> show </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <keyword> this </keyword>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> dispose </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="ClassName"> Memory </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> deAlloc </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> this </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> show </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="ClassName"> Screen </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> setColor </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> true </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> draw </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> hide </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="ClassName"> Screen </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> setColor </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <keyword> false </keyword>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> draw </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> draw </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="ClassName"> Screen </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> drawRectangle </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+              </term>
+              <symbol> + </symbol>
+              <term>
+                <integerConstant> 5 </integerConstant>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+              </term>
+              <symbol> + </symbol>
+              <term>
+                <integerConstant> 5 </integerConstant>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> int </keyword>
+    <identifier category="SubName"> getLeft </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> int </keyword>
+    <identifier category="SubName"> getRight </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+            </term>
+            <symbol> + </symbol>
+            <term>
+              <integerConstant> 5 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> setDestination </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="1" defined="True"> destx </identifier>
+      <symbol> , </symbol>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="2" defined="True"> desty </identifier>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier kind="3" type="int" index="0" defined="True"> dx </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="1" defined="True"> dy </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="2" defined="True"> temp </identifier>
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="2" used="True"> lengthx </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="1" used="True"> destx </identifier>
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="3" used="True"> lengthy </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="2" used="True"> desty </identifier>
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier category="ClassName"> Math </identifier>
+              <symbol> . </symbol>
+              <identifier category="SubName"> abs </identifier>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="2" used="True"> lengthx </identifier>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier category="ClassName"> Math </identifier>
+              <symbol> . </symbol>
+              <identifier category="SubName"> abs </identifier>
+              <symbol> ( </symbol>
+              <expressionList>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="3" used="True"> lengthy </identifier>
+                  </term>
+                </expression>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+                </term>
+                <symbol> &lt; </symbol>
+                <term>
+                  <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="2" used="True"> temp </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="3" type="int" index="2" used="True"> temp </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="boolean" index="8" used="True"> positivex </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <identifier kind="2" type="int" index="2" used="True"> desty </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="boolean" index="9" used="True"> positivey </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <identifier kind="2" type="int" index="1" used="True"> destx </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="boolean" index="8" used="True"> positivex </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <identifier kind="2" type="int" index="1" used="True"> destx </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="boolean" index="9" used="True"> positivey </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                    </term>
+                    <symbol> &lt; </symbol>
+                    <term>
+                      <identifier kind="2" type="int" index="2" used="True"> desty </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 2 </integerConstant>
+                </term>
+                <symbol> * </symbol>
+                <term>
+                  <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+            <symbol> - </symbol>
+            <term>
+              <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="5" used="True"> straightD </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 2 </integerConstant>
+            </term>
+            <symbol> * </symbol>
+            <term>
+              <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="1" type="int" index="6" used="True"> diagonalD </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <integerConstant> 2 </integerConstant>
+            </term>
+            <symbol> * </symbol>
+            <term>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="3" type="int" index="1" used="True"> dy </identifier>
+                </term>
+                <symbol> - </symbol>
+                <term>
+                  <identifier kind="3" type="int" index="0" used="True"> dx </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> int </keyword>
+    <identifier category="SubName"> move </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> hide </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+            </term>
+            <symbol> &lt; </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifier kind="1" type="int" index="5" used="True"> straightD </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="4" used="True"> d </identifier>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <identifier kind="1" type="int" index="6" used="True"> diagonalD </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="boolean" index="9" used="True"> positivey </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 4 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <integerConstant> 4 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <integerConstant> 4 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                        </term>
+                        <symbol> - </symbol>
+                        <term>
+                          <integerConstant> 4 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="boolean" index="8" used="True"> positivex </identifier>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 4 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <integerConstant> 4 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="boolean" index="7" used="True"> invert </identifier>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <integerConstant> 4 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                    </term>
+                    <symbol> - </symbol>
+                    <term>
+                      <integerConstant> 4 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                  </term>
+                  <symbol> &gt; </symbol>
+                  <term>
+                    <identifier kind="1" type="int" index="10" used="True"> leftWall </identifier>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 1 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="10" used="True"> leftWall </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                  </term>
+                  <symbol> &lt; </symbol>
+                  <term>
+                    <identifier kind="1" type="int" index="11" used="True"> rightWall </identifier>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 2 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="11" used="True"> rightWall </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                  </term>
+                  <symbol> &gt; </symbol>
+                  <term>
+                    <identifier kind="1" type="int" index="12" used="True"> topWall </identifier>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 3 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="12" used="True"> topWall </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <symbol> ~ </symbol>
+              <term>
+                <symbol> ( </symbol>
+                <expression>
+                  <term>
+                    <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                  </term>
+                  <symbol> &lt; </symbol>
+                  <term>
+                    <identifier kind="1" type="int" index="13" used="True"> bottomWall </identifier>
+                  </term>
+                </expression>
+                <symbol> ) </symbol>
+              </term>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 4 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="13" used="True"> bottomWall </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> show </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <subroutineDec>
+    <keyword> method </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> bounce </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+      <keyword> int </keyword>
+      <identifier kind="2" type="int" index="1" defined="True"> bouncingDirection </identifier>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <keyword> int </keyword>
+        <identifier kind="3" type="int" index="0" defined="True"> newx </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="1" defined="True"> newy </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="2" defined="True"> divLengthx </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="3" defined="True"> divLengthy </identifier>
+        <symbol> , </symbol>
+        <identifier kind="3" type="int" index="4" defined="True"> factor </identifier>
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="3" type="int" index="2" used="True"> divLengthx </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="2" used="True"> lengthx </identifier>
+            </term>
+            <symbol> / </symbol>
+            <term>
+              <integerConstant> 10 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="3" type="int" index="3" used="True"> divLengthy </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="3" used="True"> lengthy </identifier>
+            </term>
+            <symbol> / </symbol>
+            <term>
+              <integerConstant> 10 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier kind="2" type="int" index="1" used="True"> bouncingDirection </identifier>
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 0 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 10 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <symbol> ~ </symbol>
+                          <term>
+                            <symbol> ( </symbol>
+                            <expression>
+                              <term>
+                                <identifier kind="1" type="int" index="2" used="True"> lengthx </identifier>
+                              </term>
+                              <symbol> &lt; </symbol>
+                              <term>
+                                <integerConstant> 0 </integerConstant>
+                              </term>
+                            </expression>
+                            <symbol> ) </symbol>
+                          </term>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="2" type="int" index="1" used="True"> bouncingDirection </identifier>
+                        </term>
+                        <symbol> = </symbol>
+                        <term>
+                          <integerConstant> 1 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> | </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="2" used="True"> lengthx </identifier>
+                        </term>
+                        <symbol> &lt; </symbol>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> &amp; </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="2" type="int" index="1" used="True"> bouncingDirection </identifier>
+                        </term>
+                        <symbol> = </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <symbol> - </symbol>
+                              <term>
+                                <integerConstant> 1 </integerConstant>
+                              </term>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 20 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 5 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <ifStatement>
+          <keyword> if </keyword>
+          <symbol> ( </symbol>
+          <expression>
+            <term>
+              <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+            </term>
+            <symbol> = </symbol>
+            <term>
+              <integerConstant> 1 </integerConstant>
+            </term>
+          </expression>
+          <symbol> ) </symbol>
+          <symbol> { </symbol>
+          <statements>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <integerConstant> 506 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="3" type="int" index="3" used="True"> divLengthy </identifier>
+                    </term>
+                    <symbol> * </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <symbol> - </symbol>
+                          <term>
+                            <integerConstant> 50 </integerConstant>
+                          </term>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+                <symbol> / </symbol>
+                <term>
+                  <identifier kind="3" type="int" index="2" used="True"> divLengthx </identifier>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+            <letStatement>
+              <keyword> let </keyword>
+              <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+              <symbol> = </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                </term>
+                <symbol> + </symbol>
+                <term>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                    </term>
+                    <symbol> * </symbol>
+                    <term>
+                      <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                </term>
+              </expression>
+              <symbol> ; </symbol>
+            </letStatement>
+          </statements>
+          <symbol> } </symbol>
+          <keyword> else </keyword>
+          <symbol> { </symbol>
+          <statements>
+            <ifStatement>
+              <keyword> if </keyword>
+              <symbol> ( </symbol>
+              <expression>
+                <term>
+                  <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+                </term>
+                <symbol> = </symbol>
+                <term>
+                  <integerConstant> 2 </integerConstant>
+                </term>
+              </expression>
+              <symbol> ) </symbol>
+              <symbol> { </symbol>
+              <statements>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <integerConstant> 0 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="3" type="int" index="3" used="True"> divLengthy </identifier>
+                        </term>
+                        <symbol> * </symbol>
+                        <term>
+                          <integerConstant> 50 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                    <symbol> / </symbol>
+                    <term>
+                      <identifier kind="3" type="int" index="2" used="True"> divLengthx </identifier>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+                <letStatement>
+                  <keyword> let </keyword>
+                  <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                  <symbol> = </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="1" used="True"> y </identifier>
+                    </term>
+                    <symbol> + </symbol>
+                    <term>
+                      <symbol> ( </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                        </term>
+                        <symbol> * </symbol>
+                        <term>
+                          <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                        </term>
+                      </expression>
+                      <symbol> ) </symbol>
+                    </term>
+                  </expression>
+                  <symbol> ; </symbol>
+                </letStatement>
+              </statements>
+              <symbol> } </symbol>
+              <keyword> else </keyword>
+              <symbol> { </symbol>
+              <statements>
+                <ifStatement>
+                  <keyword> if </keyword>
+                  <symbol> ( </symbol>
+                  <expression>
+                    <term>
+                      <identifier kind="1" type="int" index="14" used="True"> wall </identifier>
+                    </term>
+                    <symbol> = </symbol>
+                    <term>
+                      <integerConstant> 3 </integerConstant>
+                    </term>
+                  </expression>
+                  <symbol> ) </symbol>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <integerConstant> 250 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier kind="3" type="int" index="2" used="True"> divLengthx </identifier>
+                            </term>
+                            <symbol> * </symbol>
+                            <term>
+                              <symbol> ( </symbol>
+                              <expression>
+                                <term>
+                                  <symbol> - </symbol>
+                                  <term>
+                                    <integerConstant> 25 </integerConstant>
+                                  </term>
+                                </term>
+                              </expression>
+                              <symbol> ) </symbol>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                        <symbol> / </symbol>
+                        <term>
+                          <identifier kind="3" type="int" index="3" used="True"> divLengthy </identifier>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                            </term>
+                            <symbol> * </symbol>
+                            <term>
+                              <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                  <keyword> else </keyword>
+                  <symbol> { </symbol>
+                  <statements>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <integerConstant> 0 </integerConstant>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier kind="3" type="int" index="2" used="True"> divLengthx </identifier>
+                            </term>
+                            <symbol> * </symbol>
+                            <term>
+                              <integerConstant> 25 </integerConstant>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                        <symbol> / </symbol>
+                        <term>
+                          <identifier kind="3" type="int" index="3" used="True"> divLengthy </identifier>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                    <letStatement>
+                      <keyword> let </keyword>
+                      <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                      <symbol> = </symbol>
+                      <expression>
+                        <term>
+                          <identifier kind="1" type="int" index="0" used="True"> x </identifier>
+                        </term>
+                        <symbol> + </symbol>
+                        <term>
+                          <symbol> ( </symbol>
+                          <expression>
+                            <term>
+                              <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+                            </term>
+                            <symbol> * </symbol>
+                            <term>
+                              <identifier kind="3" type="int" index="4" used="True"> factor </identifier>
+                            </term>
+                          </expression>
+                          <symbol> ) </symbol>
+                        </term>
+                      </expression>
+                      <symbol> ; </symbol>
+                    </letStatement>
+                  </statements>
+                  <symbol> } </symbol>
+                </ifStatement>
+              </statements>
+              <symbol> } </symbol>
+            </ifStatement>
+          </statements>
+          <symbol> } </symbol>
+        </ifStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="SubName"> setDestination </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+            <expression>
+              <term>
+                <identifier kind="3" type="int" index="0" used="True"> newx </identifier>
+              </term>
+            </expression>
+            <symbol> , </symbol>
+            <expression>
+              <term>
+                <identifier kind="3" type="int" index="1" used="True"> newy </identifier>
+              </term>
+            </expression>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>

@@ -1,0 +1,81 @@
+<class>
+  <keyword> class </keyword>
+  <identifier category="ClassName"> Main </identifier>
+  <symbol> { </symbol>
+  <subroutineDec>
+    <keyword> function </keyword>
+    <keyword> void </keyword>
+    <identifier category="SubName"> main </identifier>
+    <symbol> ( </symbol>
+    <parameterList>
+    </parameterList>
+    <symbol> ) </symbol>
+    <subroutineBody>
+      <symbol> { </symbol>
+      <varDec>
+        <keyword> var </keyword>
+        <identifier category="ClassName"> PongGame </identifier>
+        <identifier kind="3" type="PongGame" index="0" defined="True"> game </identifier>
+        <symbol> ; </symbol>
+      </varDec>
+      <statements>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier category="ClassName"> PongGame </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> newInstance </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <letStatement>
+          <keyword> let </keyword>
+          <identifier kind="3" type="PongGame" index="0" used="True"> game </identifier>
+          <symbol> = </symbol>
+          <expression>
+            <term>
+              <identifier category="ClassName"> PongGame </identifier>
+              <symbol> . </symbol>
+              <identifier category="SubName"> getInstance </identifier>
+              <symbol> ( </symbol>
+              <expressionList>
+              </expressionList>
+              <symbol> ) </symbol>
+            </term>
+          </expression>
+          <symbol> ; </symbol>
+        </letStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier kind="3" type="PongGame" index="0" used="True"> game </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> run </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <doStatement>
+          <keyword> do </keyword>
+          <identifier kind="3" type="PongGame" index="0" used="True"> game </identifier>
+          <symbol> . </symbol>
+          <identifier category="SubName"> dispose </identifier>
+          <symbol> ( </symbol>
+          <expressionList>
+          </expressionList>
+          <symbol> ) </symbol>
+          <symbol> ; </symbol>
+        </doStatement>
+        <returnStatement>
+          <keyword> return </keyword>
+          <symbol> ; </symbol>
+        </returnStatement>
+      </statements>
+      <symbol> } </symbol>
+    </subroutineBody>
+  </subroutineDec>
+  <symbol> } </symbol>
+</class>
